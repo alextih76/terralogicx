@@ -101,7 +101,14 @@
     </header>
 
     <style>
-        .home-layout { max-width:1120px; margin:0 auto; padding:48px 24px; width:100%; }
+        .home-layout { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; max-width:1440px; margin:0 auto; padding:40px 24px; width:100%; }
+        .news-panel { align-self:start; padding:20px; background:#101720; border:1px solid #30363d; border-top:3px solid #58a6ff; border-radius:12px; }
+        .news-panel h2 { font-size:20px; font-weight:700; color:#f0f6fc; margin-bottom:16px; }
+        .news-panel article { padding:14px 0; border-top:1px solid #30363d; }
+        .news-panel h3 { font-size:16px; font-weight:600; line-height:1.45; color:#f0f6fc; }
+        .news-panel a:hover { color:#58a6ff; }
+        .news-panel .all-news { display:inline-block; margin-top:12px; font-size:14px; color:#58a6ff; }
+        @media(min-width:1200px) { .home-layout { grid-template-columns:260px minmax(0,1fr); } }
         .resource-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-top:40px; text-align:left; }
         .resource-card { min-width:0; padding:24px; background:#161b22; border:1px solid #30363d; border-radius:12px; font-size:14px; line-height:1.65; }
         .resource-card h2 { color:#f0f6fc; font-size:20px; font-weight:700; margin:0 0 14px; }
@@ -112,6 +119,12 @@
         @media(max-width:767px) { .resource-grid { grid-template-columns:minmax(0,1fr); } header { flex-wrap:wrap; gap:16px; } .home-layout { padding:28px 20px; } }
     </style>
     <div class="home-layout">
+    <aside class="news-panel" aria-labelledby="latest-news-heading">
+        <h2 id="latest-news-heading"><a href="/news/">News &amp; Insights →</a></h2>
+        <article><h3><a href="/news/grid-requests-versus-deliverable-power/">Grid Requests Are Not Deliverable Power</a></h3></article>
+        <article><h3><a href="/news/three-clocks-of-ai-infrastructure/">The Three Clocks of AI Infrastructure</a></h3></article>
+        <a class="all-news" href="/news/">View all insights →</a>
+    </aside>
     <!-- Hero Section -->
     <main class="min-w-0 text-center flex flex-col justify-center">
         <div class="inline-block mx-auto mb-6 px-3 py-1 bg-[#23863622] text-[#2ea043] border border-[#2ea04344] rounded-full text-xs font-semibold tracking-wide uppercase">
