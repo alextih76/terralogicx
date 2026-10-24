@@ -117,6 +117,22 @@
         .resource-card a { color:#58a6ff; overflow-wrap:anywhere; }
         .resource-card a:hover { text-decoration:underline; }
         @media(max-width:767px) { .resource-grid { grid-template-columns:minmax(0,1fr); } header { flex-wrap:wrap; gap:16px; } .home-layout { padding:28px 20px; } }
+        /* Unified homepage alignment and spacing. */
+        .home-layout { max-width:1280px; gap:24px; padding:40px 24px; align-items:start; }
+        .home-layout main { display:grid; grid-template-columns:minmax(0,1fr); gap:24px; justify-content:initial; }
+        .home-layout main > * { width:100%; max-width:none; margin:0; min-width:0; }
+        .home-layout main > div:first-child { width:fit-content; justify-self:center; }
+        .home-layout main > h1 { font-size:clamp(32px,3.5vw,52px); line-height:1.15; }
+        .home-layout main > p { max-width:720px; justify-self:center; font-size:18px; line-height:1.7; }
+        .home-layout main > .grid { gap:16px; align-items:stretch; }
+        .home-layout main > .grid > div { padding:20px; border-radius:12px; }
+        .home-layout main > .grid p { font-size:14px; line-height:1.65; }
+        .home-layout main > .resource-grid { display:grid; gap:16px; margin:0; }
+        .resource-card { padding:20px; }
+        .resource-card h2 { font-size:20px; }
+        .news-panel { padding:20px; }
+        @media(min-width:1200px) { .home-layout { grid-template-columns:250px minmax(0,1fr); } }
+        @media(max-width:767px) { .home-layout { padding:24px 16px; } .home-layout main { gap:20px; } .home-layout main > .resource-grid { grid-template-columns:minmax(0,1fr); } }
     </style>
     <div class="home-layout">
     <aside class="news-panel" aria-labelledby="latest-news-heading">
