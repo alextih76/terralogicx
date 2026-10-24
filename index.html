@@ -131,14 +131,16 @@
         .resource-card { padding:20px; }
         .resource-card h2 { font-size:20px; }
         .news-panel { padding:20px; }
-        @media(min-width:1200px) { .home-layout { grid-template-columns:250px minmax(0,1fr); } }
+        @media(min-width:1200px) { .home-layout { grid-template-columns:225px minmax(0,1fr); align-items:stretch; } .news-panel { align-self:stretch; display:flex; flex-direction:column; } .news-panel .all-news { margin-top:auto; padding-top:20px; } }
+        .news-panel article p { margin-top:12px; font-size:14px; line-height:1.75; color:#8b949e; }
+        .news-panel article { padding:20px 0; }
         @media(max-width:767px) { .home-layout { padding:24px 16px; } .home-layout main { gap:20px; } .home-layout main > .resource-grid { grid-template-columns:minmax(0,1fr); } }
     </style>
     <div class="home-layout">
     <aside class="news-panel" aria-labelledby="latest-news-heading">
         <h2 id="latest-news-heading"><a href="/news/">News &amp; Insights →</a></h2>
-        <article><h3><a href="/news/grid-requests-versus-deliverable-power/">Grid Requests Are Not Deliverable Power</a></h3></article>
-        <article><h3><a href="/news/three-clocks-of-ai-infrastructure/">The Three Clocks of AI Infrastructure</a></h3></article>
+        <article><h3><a href="/news/grid-requests-versus-deliverable-power/">Grid Requests Are Not Deliverable Power</a></h3><p>A connection request is not a guarantee of available power. Site control, utility studies, network upgrades, and delivery conditions all need documentary evidence.</p><p>For investors, the key question is not whether a queue position exists, but what must happen before the site can actually receive electricity.</p></article>
+        <article><h3><a href="/news/three-clocks-of-ai-infrastructure/">The Three Clocks of AI Infrastructure</a></h3><p>Debt service, equipment economics, and energization run on different schedules. A viable project must bring all three into alignment.</p><p>Strong demand for compute cannot remove the cost of waiting for power or the obligations that fall due before commercial operation.</p></article>
         <a class="all-news" href="/news/">View all insights →</a>
     </aside>
     <!-- Hero Section -->
