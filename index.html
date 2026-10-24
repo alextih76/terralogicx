@@ -111,6 +111,9 @@
         .news-panel .news-label { color:#58a6ff; font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
         @media(min-width:1100px) { .home-layout { grid-template-columns:350px minmax(0,1fr); gap:48px; } }
         @media(max-width:640px) { header { flex-wrap:wrap; gap:16px; } .home-layout { padding:28px 20px; } }
+        .profiles-contact-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; margin-top:40px; width:100%; }
+        #contact a { overflow-wrap:anywhere; }
+        @media(min-width:768px) { .profiles-contact-grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start; } }
     </style>
     <div class="home-layout">
     <aside class="news-panel" aria-labelledby="latest-news-heading">
@@ -176,7 +179,8 @@
                 <p class="text-xs text-[#8b949e]">Physical AI infrastructure strategist focused on land due diligence, data center site selection, and grid interconnection risk.</p>
             </div>
         </div>
-        <section class="mt-12 text-left max-w-3xl mx-auto w-full" aria-labelledby="research-heading">
+        <div class="profiles-contact-grid">
+        <section class="text-left min-w-0" aria-labelledby="research-heading">
             <h2 id="research-heading" class="text-xl font-bold text-white mb-4">Research &amp; Profiles</h2>
             <p class="mb-4 text-[#8b949e]">Explore TerraLogicX publications, technical materials, and public profiles.</p>
             <ul class="space-y-3 text-[#58a6ff]">
@@ -186,15 +190,16 @@
                 <li><a href="https://terralogicx.com/about/aleksey-tikhomirov/" class="hover:underline">About Aleksey Tikhomirov</a></li>
             </ul>
         </section>
-        <section id="contact" aria-labelledby="contact-heading" class="mt-12 p-8 bg-[#161b22] border border-[#30363d] rounded-xl text-left w-full">
+        <section id="contact" aria-labelledby="contact-heading" class="p-6 bg-[#161b22] border border-[#30363d] rounded-xl text-left min-w-0">
             <h2 id="contact-heading" class="text-2xl font-bold text-white mb-3">Contact TerraLogicX</h2>
-            <p class="text-[#8b949e] mb-6">Discuss a site or infrastructure project. For site assessments, research enquiries, and partnerships, get in touch with TerraLogicX.</p>
+            <p class="text-[#8b949e] mb-6">For site assessments, research enquiries, and partnerships.</p>
             <div class="flex flex-wrap gap-4 items-center">
                 <a href="mailto:contact@terralogicx.com" class="inline-block px-5 py-3 rounded-lg bg-[#1f6feb] text-white font-semibold hover:bg-[#388bfd] transition">Email us</a>
                 <a href="https://www.linkedin.com/company/terralogicx/" class="text-[#58a6ff] hover:underline">Connect on LinkedIn</a>
             </div>
             <p class="mt-4 text-sm"><a href="mailto:contact@terralogicx.com" class="text-[#58a6ff] hover:underline">contact@terralogicx.com</a></p>
         </section>
+        </div>
     </main>
     </div>
 
