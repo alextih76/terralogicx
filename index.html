@@ -101,8 +101,42 @@
         </div>
     </header>
 
+    <style>
+        .home-layout { display:grid; grid-template-columns:minmax(0,1fr); gap:40px; max-width:1440px; margin:0 auto; padding:48px 24px; width:100%; }
+        .news-panel { background:#101720; border:1px solid #30363d; border-top:4px solid #58a6ff; border-radius:12px; padding:28px; align-self:start; }
+        .news-panel h2 { color:#f0f6fc; font-size:28px; font-weight:800; margin:8px 0 20px; }
+        .news-panel article { padding:22px 0; border-top:1px solid #30363d; }
+        .news-panel h3 { font-size:21px; line-height:1.35; font-weight:700; color:#f0f6fc; margin-bottom:10px; }
+        .news-panel h3 a:hover { color:#58a6ff; }
+        .news-panel p { color:#8b949e; font-size:14px; line-height:1.65; }
+        .news-panel .news-label { color:#58a6ff; font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
+        @media(min-width:1100px) { .home-layout { grid-template-columns:350px minmax(0,1fr); gap:48px; } }
+        @media(max-width:640px) { header { flex-wrap:wrap; gap:16px; } .home-layout { padding:28px 20px; } }
+    </style>
+    <div class="home-layout">
+    <aside class="news-panel" aria-labelledby="latest-news-heading">
+        <p class="news-label">TerraLogicX editorial</p>
+        <h2 id="latest-news-heading">News &amp; Insights</h2>
+        <p>Land, power &amp; the economics of AI infrastructure.</p>
+        <article>
+            <p class="news-label">Grid access · 24 Oct 2026</p>
+            <h3><a href="/news/grid-requests-versus-deliverable-power/">Grid Requests Are Not Deliverable Power</a></h3>
+            <p>What a connection application does — and does not — prove about site readiness.</p>
+        </article>
+        <article>
+            <p class="news-label">Project economics · 24 Oct 2026</p>
+            <h3><a href="/news/three-clocks-of-ai-infrastructure/">The Three Clocks of AI Infrastructure</a></h3>
+            <p>Debt service, equipment economics, and energization must work on the same timeline.</p>
+        </article>
+        <article>
+            <p class="news-label">Equipment &amp; capital · 24 Oct 2026</p>
+            <h3><a href="/news/equipment-orders-are-not-cash-flow/">Equipment Orders Are Not Cash Flow</a></h3>
+            <p>Why essential power and cooling equipment still carries execution and valuation risk.</p>
+        </article>
+        <a href="/news/" class="inline-block mt-4 text-[#58a6ff] font-semibold hover:underline">View all insights →</a>
+    </aside>
     <!-- Hero Section -->
-    <main class="max-w-4xl mx-auto px-6 py-20 text-center flex-grow flex flex-col justify-center">
+    <main class="min-w-0 text-center flex flex-col justify-center">
         <div class="inline-block mx-auto mb-6 px-3 py-1 bg-[#23863622] text-[#2ea043] border border-[#2ea04344] rounded-full text-xs font-semibold tracking-wide uppercase">
             Algorithmic Land & Power Underwriting
         </div>
@@ -155,6 +189,7 @@
             </ul>
         </section>
     </main>
+    </div>
 
     <!-- Footer -->
     <footer class="border-t border-[#30363d] px-6 py-6 max-w-7xl mx-auto w-full text-center text-xs text-[#8b949e]">
