@@ -101,42 +101,17 @@
     </header>
 
     <style>
-        .home-layout { display:grid; grid-template-columns:minmax(0,1fr); gap:40px; max-width:1440px; margin:0 auto; padding:48px 24px; width:100%; }
-        .news-panel { background:#101720; border:1px solid #30363d; border-top:4px solid #58a6ff; border-radius:12px; padding:28px; align-self:start; }
-        .news-panel h2 { color:#f0f6fc; font-size:28px; font-weight:800; margin:8px 0 20px; }
-        .news-panel article { padding:22px 0; border-top:1px solid #30363d; }
-        .news-panel h3 { font-size:21px; line-height:1.35; font-weight:700; color:#f0f6fc; margin-bottom:10px; }
-        .news-panel h3 a:hover { color:#58a6ff; }
-        .news-panel p { color:#8b949e; font-size:14px; line-height:1.65; }
-        .news-panel .news-label { color:#58a6ff; font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
-        @media(min-width:1100px) { .home-layout { grid-template-columns:350px minmax(0,1fr); gap:48px; } }
-        @media(max-width:640px) { header { flex-wrap:wrap; gap:16px; } .home-layout { padding:28px 20px; } }
-        .profiles-contact-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; margin-top:40px; width:100%; }
-        #contact a { overflow-wrap:anywhere; }
-        @media(min-width:768px) { .profiles-contact-grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start; } }
+        .home-layout { max-width:1120px; margin:0 auto; padding:48px 24px; width:100%; }
+        .resource-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-top:40px; text-align:left; }
+        .resource-card { min-width:0; padding:24px; background:#161b22; border:1px solid #30363d; border-radius:12px; font-size:14px; line-height:1.65; }
+        .resource-card h2 { color:#f0f6fc; font-size:20px; font-weight:700; margin:0 0 14px; }
+        .resource-card p { color:#8b949e; margin:0 0 16px; }
+        .resource-card ul { display:grid; gap:12px; }
+        .resource-card a { color:#58a6ff; overflow-wrap:anywhere; }
+        .resource-card a:hover { text-decoration:underline; }
+        @media(max-width:767px) { .resource-grid { grid-template-columns:minmax(0,1fr); } header { flex-wrap:wrap; gap:16px; } .home-layout { padding:28px 20px; } }
     </style>
     <div class="home-layout">
-    <aside class="news-panel" aria-labelledby="latest-news-heading">
-        <p class="news-label">TerraLogicX editorial</p>
-        <h2 id="latest-news-heading"><a href="/news/" class="hover:text-[#58a6ff] transition">News &amp; Insights →</a></h2>
-        <p>Land, power &amp; the economics of AI infrastructure.</p>
-        <article>
-            <p class="news-label">Grid access · 24 Oct 2026</p>
-            <h3><a href="/news/grid-requests-versus-deliverable-power/">Grid Requests Are Not Deliverable Power</a></h3>
-            <p>What a connection application does — and does not — prove about site readiness.</p>
-        </article>
-        <article>
-            <p class="news-label">Project economics · 24 Oct 2026</p>
-            <h3><a href="/news/three-clocks-of-ai-infrastructure/">The Three Clocks of AI Infrastructure</a></h3>
-            <p>Debt service, equipment economics, and energization must work on the same timeline.</p>
-        </article>
-        <article>
-            <p class="news-label">Equipment &amp; capital · 24 Oct 2026</p>
-            <h3><a href="/news/equipment-orders-are-not-cash-flow/">Equipment Orders Are Not Cash Flow</a></h3>
-            <p>Why essential power and cooling equipment still carries execution and valuation risk.</p>
-        </article>
-        <a href="/news/" class="inline-block mt-4 text-[#58a6ff] font-semibold hover:underline">View all insights →</a>
-    </aside>
     <!-- Hero Section -->
     <main class="min-w-0 text-center flex flex-col justify-center">
         <div class="inline-block mx-auto mb-6 px-3 py-1 bg-[#23863622] text-[#2ea043] border border-[#2ea04344] rounded-full text-xs font-semibold tracking-wide uppercase">
@@ -179,26 +154,32 @@
                 <p class="text-xs text-[#8b949e]">Physical AI infrastructure strategist focused on land due diligence, data center site selection, and grid interconnection risk.</p>
             </div>
         </div>
-        <div class="profiles-contact-grid">
-        <section class="text-left min-w-0" aria-labelledby="research-heading">
-            <h2 id="research-heading" class="text-xl font-bold text-white mb-4">Research &amp; Profiles</h2>
-            <p class="mb-4 text-[#8b949e]">Explore TerraLogicX publications, technical materials, and public profiles.</p>
-            <ul class="space-y-3 text-[#58a6ff]">
-                <li><a href="https://www.linkedin.com/company/terralogicx/" class="hover:underline">TerraLogicX on LinkedIn</a></li>
-                <li><a href="https://alti529175.substack.com/p/aleksey-tikhomirov-terralogicx-why" class="hover:underline">Read the TerraLogicX article on Substack</a></li>
-                <li><a href="https://www.crunchbase.com/organization/terralogicx" class="hover:underline">TerraLogicX on Crunchbase</a></li>
-                <li><a href="https://terralogicx.com/about/aleksey-tikhomirov/" class="hover:underline">About Aleksey Tikhomirov</a></li>
-            </ul>
-        </section>
-        <section id="contact" aria-labelledby="contact-heading" class="p-6 bg-[#161b22] border border-[#30363d] rounded-xl text-left min-w-0">
-            <h2 id="contact-heading" class="text-2xl font-bold text-white mb-3">Contact TerraLogicX</h2>
-            <p class="text-[#8b949e] mb-6">For site assessments, research enquiries, and partnerships.</p>
-            <div class="flex flex-wrap gap-4 items-center">
-                <a href="mailto:contact@terralogicx.com" class="inline-block px-5 py-3 rounded-lg bg-[#1f6feb] text-white font-semibold hover:bg-[#388bfd] transition">Email us</a>
-                <a href="https://www.linkedin.com/company/terralogicx/" class="text-[#58a6ff] hover:underline">Connect on LinkedIn</a>
-            </div>
-            <p class="mt-4 text-sm"><a href="mailto:contact@terralogicx.com" class="text-[#58a6ff] hover:underline">contact@terralogicx.com</a></p>
-        </section>
+        <div class="resource-grid">
+            <section class="resource-card" aria-labelledby="research-heading">
+                <h2 id="research-heading">Research</h2>
+                <p>Analysis of land, power, and AI infrastructure.</p>
+                <ul>
+                    <li><a href="/news/">News &amp; Insights →</a></li>
+                    <li><a href="https://alti529175.substack.com/p/aleksey-tikhomirov-terralogicx-why">TerraLogicX on Substack</a></li>
+                </ul>
+            </section>
+            <section class="resource-card" aria-labelledby="profiles-heading">
+                <h2 id="profiles-heading">Profiles</h2>
+                <p>Explore TerraLogicX and its founder.</p>
+                <ul>
+                    <li><a href="https://www.linkedin.com/company/terralogicx/">TerraLogicX on LinkedIn</a></li>
+                    <li><a href="https://www.crunchbase.com/organization/terralogicx">TerraLogicX on Crunchbase</a></li>
+                    <li><a href="/about/aleksey-tikhomirov/">About Aleksey Tikhomirov</a></li>
+                </ul>
+            </section>
+            <section id="contact" class="resource-card" aria-labelledby="contact-heading">
+                <h2 id="contact-heading">Contact</h2>
+                <p>For site assessments, research enquiries, and partnerships.</p>
+                <ul>
+                    <li><a href="mailto:contact@terralogicx.com">contact@terralogicx.com</a></li>
+                    <li><a href="https://www.linkedin.com/company/terralogicx/">Connect on LinkedIn</a></li>
+                </ul>
+            </section>
         </div>
     </main>
     </div>
