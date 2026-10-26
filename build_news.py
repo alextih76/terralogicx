@@ -27,23 +27,24 @@ STORIES=[
  ('Expectations still matter','A company can grow while its shares decline if the market had priced in stronger results. Explaining a particular price movement requires evidence; operational observations alone do not establish market causation.'),
  ('Takeaway','Follow the conversion of orders into deliveries, margins, and cash. Essential equipment can be a strong business and still be a poor investment at the wrong price.')], 'sources':[]}
 ]
+STORIES=json.loads((ROOT/'news_updates.json').read_text())+STORIES
 CSS='body{background:#0a0e14;color:#c9d1d9;font:18px/1.75 system-ui,sans-serif;margin:0}main{max-width:850px;margin:auto;padding:36px 24px}a{color:#58a6ff}h1,h2{color:#f0f6fc;line-height:1.25}h1{font-size:2.3rem}h2{font-size:1.35rem}nav{display:flex;gap:24px;flex-wrap:wrap}article,section.card{margin:30px 0;padding:24px;border:1px solid #30363d;border-radius:12px}.meta,footer{color:#8b949e;font-size:15px}footer{border-top:1px solid #30363d;margin-top:40px;padding-top:20px}'
 def page(title,desc,path,body,schema):
  return f'''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | TerraLogicX</title><meta name="description" content="{escape(desc,quote=True)}"><link rel="canonical" href="{BASE}{path}"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:url" content="{BASE}{path}"><meta property="og:type" content="{'article' if path!='/news/' else 'website'}"><script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script><style>{CSS}</style></head><body><main><nav aria-label="Main navigation"><a href="/">TerraLogicX</a><a href="/news/">News &amp; Insights</a><a href="/about/aleksey-tikhomirov/">Founder</a></nav>{body}<footer>© 2026 TerraLogicX · Land, power, and Time-to-Power intelligence.</footer></main></body></html>'''
 for item in STORIES:
  path='/news/'+item['slug']+'/'
- body=f'<article><p class="meta">Infrastructure analysis · English adaptation</p><h1>{escape(item["title"])}</h1><p>{escape(item["summary"])}</p><p class="meta">Adapted from the Telegram editorial archive dated <time datetime="{item["original_date"]}">{item["original_date"]}</time>. English edition published 24 October 2026.</p>'
+ body=f'<article><p class="meta">Infrastructure analysis · English adaptation</p><h1>{escape(item["title"])}</h1><p>{escape(item["summary"])}</p><p class="meta">Adapted from the Telegram editorial archive dated <time datetime="{item["original_date"]}">{item["original_date"]}</time>. English edition published {item.get("published", "2026-10-24")}.</p>'
  for heading,text in item['body']:body+=f'<section><h2>{escape(heading)}</h2><p>{escape(text)}</p></section>'
  body+='<section><h2>Editorial provenance</h2><p>This is an edited English adaptation of a Russian-language Telegram publication, not a verbatim translation or a new company announcement. Unverified numerical claims and unsupported causal explanations have been omitted. The analytical conclusions are TerraLogicX editorial views.</p>'
  body+=f'<p class="meta">Archive reference: {escape(item["source_id"])}</p>'
  if item['sources']:
   body+='<h2>Further reading</h2><ul>'+''.join(f'<li><a href="{escape(u,quote=True)}">{escape(label)}</a></li>' for label,u in item['sources'])+'</ul>'
  body+='</section></article>'
- schema={'@context':'https://schema.org','@type':'Article','headline':item['title'],'description':item['summary'],'url':BASE+path,'inLanguage':'en','datePublished':'2026-10-24','publisher':{'@type':'Organization','@id':BASE+'/#organization','name':'TerraLogicX','url':BASE+'/'},'mainEntityOfPage':BASE+path}
+ schema={'@context':'https://schema.org','@type':'Article','headline':item['title'],'description':item['summary'],'url':BASE+path,'inLanguage':'en','datePublished':item.get('published','2026-10-24'),'publisher':{'@type':'Organization','@id':BASE+'/#organization','name':'TerraLogicX','url':BASE+'/'},'mainEntityOfPage':BASE+path}
  folder=ROOT/path.strip('/');folder.mkdir(parents=True,exist_ok=True);(folder/'index.html').write_text(page(item['title'],item['summary'],path,body,schema))
 body='<h1>News &amp; Insights</h1><p>Land, power, data centers, and the economics of physical AI infrastructure.</p><p class="meta">Selected English adaptations from our Telegram editorial archive. These pieces are edited for relevance and clarity, not automatically mirrored.</p>'
 for item in STORIES:
- body+=f'<section class="card"><p class="meta">English edition · 24 October 2026</p><h2><a href="/news/{item["slug"]}/">{escape(item["title"])}</a></h2><p>{escape(item["summary"])}</p><a href="/news/{item["slug"]}/">Read analysis →</a></section>'
+ body+=f'<section class="card"><p class="meta">English edition · {item.get("published", "2026-10-24")}</p><h2><a href="/news/{item["slug"]}/">{escape(item["title"])}</a></h2><p>{escape(item["summary"])}</p><a href="/news/{item["slug"]}/">Read analysis →</a></section>'
 schema={'@context':'https://schema.org','@type':'CollectionPage','name':'News & Insights','url':BASE+'/news/','inLanguage':'en','hasPart':[{'@type':'Article','headline':s['title'],'url':BASE+'/news/'+s['slug']+'/'} for s in STORIES]}
 folder=ROOT/'news';folder.mkdir(exist_ok=True);(folder/'index.html').write_text(page('News & Insights','English analysis of AI infrastructure, land, power, and data center investment.','/news/',body,schema))
 print('Built news index and three English articles')
